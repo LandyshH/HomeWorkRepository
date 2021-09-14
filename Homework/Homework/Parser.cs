@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace HomeWork1
+namespace HomeWork
 {
     public static class Parser
     {
-          private const int WrongOperation = 1;
-          private const int WrongArgLength = 2;
-          private const int WrongArgFormatInt = 3;
+        private const int WrongOperation = 1;
+        private const int WrongArgLength = 2;
+        private const int WrongArgFormatInt = 3;
         
         public static int ParseArguments(string[] args, out int val1, out CalculatorOperation operation, out int val2)
         {

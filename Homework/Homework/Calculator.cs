@@ -1,4 +1,4 @@
-﻿namespace HomeWork1
+﻿namespace HomeWork
 {
     public enum CalculatorOperation : byte
     {
@@ -16,7 +16,7 @@
                 CalculatorOperation.Plus => val1 + val2,
                 CalculatorOperation.Multiply => val1 * val2,
                 CalculatorOperation.Minus => val1 - val2,
-                CalculatorOperation.Divide => val1 / val2,
+                _ => val1 / val2,
             };
             
             return result;
