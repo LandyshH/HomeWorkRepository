@@ -82,6 +82,21 @@ namespace CalculatorTests
             var result = Parser.ParseArguments(args, out _, out _, out _);
             Assert.AreEqual(0, result);
         }
+
+        [Test]
+        public void ProgramCheck_AllArgumentsCorrect_0Returned()
+        {
+            var args = new[]{"9", "-", "1"};
+            var result = Program.Main(args);
+            Assert.AreEqual(0, result);
+        }
         
+        [Test]
+        public void ProgramCheck_WrongOperation_1Returned()
+        {
+            var args = new[]{"9", "^", "2"};
+            var result = Program.Main(args);
+            Assert.AreEqual(1, result);
+        }
     }
 }

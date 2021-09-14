@@ -4,7 +4,7 @@ namespace HomeWork
 {
     public static class Program
     {
-        private static int Main(string[] args)
+        public static int Main(string[] args)
         {
             var resultIs = Parser.ParseArguments(args, 
                 out var val1, 
