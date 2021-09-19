@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace CalculatorTests
 {
-    public class Tests
+    public class CalculatorTests
     {
 
         [Test]
