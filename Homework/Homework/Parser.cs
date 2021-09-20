@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HomeWork
 {
-    enum HundleExceptions : byte
+    internal enum HundledExceptions : byte
     {
           Success,
           WrongOperation,
@@ -15,15 +16,12 @@ namespace HomeWork
         {
             val1 = val2 = 0;
             operation = 0;
-            if (!CheckArgLength(args)) return (int)HundleExceptions.WrongArgLength;
-            var isInt1 = int.TryParse(args[0], out val1);
-            var isInt2 = int.TryParse(args[2], out val2);
+            if (!CheckArgLength(args)) return (int)HundledExceptions.WrongArgLength;
+            if (!TryParseOperationOrQuit(args[1], out operation)) return (int)HundledExceptions.WrongOperation;
+            if (!TryParseArgOrQuit(args[0], out val1) || !TryParseArgOrQuit(args[2], out val2)) 
+                return (int)HundledExceptions.WrongArgFormatInt;
             
-            if (!TryParseOperationOrQuit(args[1], out operation)) return (int)HundleExceptions.WrongOperation;
-            if (!ArgumentIsInt(args[0], isInt1) || !ArgumentIsInt(args[2], isInt2)) 
-                return (int)HundleExceptions.WrongArgFormatInt;
-            
-            return (int)HundleExceptions.Success;
+            return (int)HundledExceptions.Success;
         }
 
         private static bool TryParseOperationOrQuit(string arg, out CalculatorOperation operation)
@@ -40,17 +38,17 @@ namespace HomeWork
             return operation != 0;
         }
 
-        private static bool CheckArgLength(string[] args)
+        private static bool CheckArgLength(IReadOnlyCollection<string> args)
         {
-            var length = args.Length;
+            var length = args.Count;
             if (length == 3) return true;
             Console.WriteLine($"The program requires 3 arguments, but was {length}");
             return false;
         }
         
-        private static bool ArgumentIsInt(string arg, bool isInt)
+        private static bool TryParseArgOrQuit(string arg, out int val)
         {
-            if (isInt) return true;
+            if (int.TryParse(arg, out val)) return true;
             Console.WriteLine($"Value is not int: {arg}");
             return false;
         }
