@@ -10,7 +10,7 @@ namespace HomeWork
                 out var val1, 
                 out var operation, 
                 out var val2);
-            if (resultIs != 0) return resultIs;
+            if (resultIs != HundledExceptions.Success) return (int)resultIs;
             var result = Calculator.Calculate(val1, operation, val2);
             Console.WriteLine($"Answer is: {result}");
             return 0;

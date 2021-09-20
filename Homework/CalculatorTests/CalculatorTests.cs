@@ -36,51 +36,51 @@ namespace CalculatorTests
         }
         
         [Test]
-        public void ParseArguments_AllArgumentsCorrect_0Returned()
+        public void ParseArguments_AllArgumentsCorrect_SuccessReturned()
         {
             var args = new[]{"2", "+", "9"};
             var result = Parser.ParseArguments(args, out _, out _, out _);
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(HundledExceptions.Success, result);
         }
 
         [Test]
-        public void ParseArguments_ArgumentsLengthIsNot3_2Returned()
+        public void ParseArguments_ArgumentsLengthIsNot3_WrongArgLengthReturned()
         {
             var args = new[]{"1", "-", "14", "5"};
             var result = Parser.ParseArguments(args, out _, out _, out _);
-            Assert.AreEqual(2, result);
+            Assert.AreEqual(HundledExceptions.WrongArgLength, result);
         }
 
         [Test]
-        public void ParseArguments_WrongOperation_1Returned()
+        public void ParseArguments_WrongOperation_WrongOperationReturned()
         {
             var args = new[]{"6", "%", "3"};
             var result = Parser.ParseArguments(args, out _, out _, out _);
-            Assert.AreEqual(1, result);
+            Assert.AreEqual(HundledExceptions.WrongOperation, result);
         }
         
         [Test]
-        public void ParseArguments_FirstArgumentIsNotInt_3Returned()
+        public void ParseArguments_FirstArgumentIsNotInt_WrongArgFormatReturned()
         {
             var args = new[]{"6.2", "/", "3"};
             var result = Parser.ParseArguments(args, out _, out _, out _);
-            Assert.AreEqual(3, result);
+            Assert.AreEqual(HundledExceptions.WrongArgFormatInt, result);
         }
         
         [Test]
-        public void ParseArguments_SecondArgumentIsNotInt_3Returned()
+        public void ParseArguments_SecondArgumentIsNotInt_WrongArgFormatReturned()
         {
             var args = new[]{"6", "/", "a"};
             var result = Parser.ParseArguments(args, out _, out _, out _);
-            Assert.AreEqual(3, result);
+            Assert.AreEqual(HundledExceptions.WrongArgFormatInt, result);
         }
         
         [Test]
-        public void ParseArguments_ParseOperation_0Returned()
+        public void ParseArguments_ParseOperation_SuccessReturned()
         {
             var args = new[]{"6", "*", "6"};
             var result = Parser.ParseArguments(args, out _, out _, out _);
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(HundledExceptions.Success, result);
         }
 
         [Test]

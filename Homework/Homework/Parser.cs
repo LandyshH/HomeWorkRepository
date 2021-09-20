@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace HomeWork
 {
-    internal enum HundledExceptions : byte
+    public enum HundledExceptions : byte
     {
           Success,
           WrongOperation,
@@ -12,16 +12,16 @@ namespace HomeWork
     }
     public static class Parser
     {
-        public static int ParseArguments(string[] args, out int val1, out CalculatorOperation operation, out int val2)
+        public static HundledExceptions ParseArguments(string[] args, out int val1, out CalculatorOperation operation, out int val2)
         {
             val1 = val2 = 0;
             operation = 0;
-            if (!CheckArgLength(args)) return (int)HundledExceptions.WrongArgLength;
-            if (!TryParseOperationOrQuit(args[1], out operation)) return (int)HundledExceptions.WrongOperation;
+            if (!CheckArgLength(args)) return HundledExceptions.WrongArgLength;
+            if (!TryParseOperationOrQuit(args[1], out operation)) return HundledExceptions.WrongOperation;
             if (!TryParseArgOrQuit(args[0], out val1) || !TryParseArgOrQuit(args[2], out val2)) 
-                return (int)HundledExceptions.WrongArgFormatInt;
+                return HundledExceptions.WrongArgFormatInt;
             
-            return (int)HundledExceptions.Success;
+            return HundledExceptions.Success;
         }
 
         private static bool TryParseOperationOrQuit(string arg, out CalculatorOperation operation)
