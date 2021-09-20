@@ -12,15 +12,14 @@ namespace HomeWork
     }
     public static class Parser
     {
-        public static HundledExceptions ParseArguments(string[] args, out int val1, out CalculatorOperation operation, out int val2)
+        public static HundledExceptions ParseArguments(string[] args, out CalculatorProblem problem)
         {
-            val1 = val2 = 0;
-            operation = 0;
+            problem = new CalculatorProblem();
             if (!CheckArgLength(args)) return HundledExceptions.WrongArgLength;
-            if (!TryParseOperationOrQuit(args[1], out operation)) return HundledExceptions.WrongOperation;
-            if (!TryParseArgOrQuit(args[0], out val1) || !TryParseArgOrQuit(args[2], out val2)) 
+            if (!TryParseOperationOrQuit(args[1], out var operation)) return HundledExceptions.WrongOperation;
+            if (!TryParseArgOrQuit(args[0], out var val1) || !TryParseArgOrQuit(args[2], out var val2)) 
                 return HundledExceptions.WrongArgFormatInt;
-            
+            problem = new CalculatorProblem(val1, operation, val2);
             return HundledExceptions.Success;
         }
 
