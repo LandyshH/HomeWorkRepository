@@ -3,13 +3,6 @@ using System.Collections.Generic;
 
 namespace HomeWork
 {
-    public enum HundledExceptions : byte
-    {
-          Success,
-          WrongOperation,
-          WrongArgLength,
-          WrongArgFormatInt,
-    }
     public static class Parser
     {
         public static HundledExceptions ParseArguments(string[] args, out CalculatorProblem problem)
