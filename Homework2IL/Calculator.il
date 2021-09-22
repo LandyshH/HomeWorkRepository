@@ -30,7 +30,7 @@
     ldarg.2      // val2
     sub ret
 
-    divide: ldarg.0      // val1
+    divide: ldarg.0 // val1
     ldarg.2      // val2
     div ret
   }

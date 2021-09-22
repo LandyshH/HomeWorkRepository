@@ -1,10 +1,4 @@
-﻿// Type: HomeWork.CalculatorProblem 
-// Assembly: Homework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: DA6C4637-1FAE-489E-AA7F-591995C695BF
-// Location: C:\Users\user\Desktop\dotNetRepository\HomeWorkRepository\Homework\Homework\bin\Debug\net5.0\Homework.dll
-// Sequence point data from C:\Users\user\Desktop\dotNetRepository\HomeWorkRepository\Homework\Homework\bin\Debug\net5.0\Homework.pdb
-
-.class public auto ansi beforefieldinit
+﻿.class public auto ansi beforefieldinit
   Homework2IL.CalculatorProblem
     extends System.Object
 {

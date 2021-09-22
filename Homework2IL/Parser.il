@@ -1,5 +1,4 @@
-﻿
-.class public abstract sealed auto ansi beforefieldinit
+﻿.class public abstract sealed auto ansi beforefieldinit
   Homework2IL.Parser
     extends System.Object
 {
@@ -20,9 +19,6 @@
       [5] bool V_5,
       [6] bool V_6
     )
-
-    // [9 9 - 9 10]
-    IL_0000: nop
 
     // [10 13 - 10 47]
     IL_0001: ldarg.1      // problem
@@ -202,50 +198,22 @@
     ) cil managed
   {
     .maxstack 2
-    .locals init (
-      [0] int32 length,
-      [1] bool V_1,
-      [2] bool V_2
-    )
 
-    // [34 9 - 34 10]
-    IL_0000: nop
-
-    // [35 13 - 35 37]
-    IL_0001: ldarg.0      // args
-    IL_0002: callvirt     instance int32 class [System.Runtime]System.Collections.Generic.IReadOnlyCollection`1<string>::get_Count()
-    IL_0007: stloc.0      // length
-
-    // [36 13 - 36 29]
-    IL_0008: ldloc.0      // length
-    IL_0009: ldc.i4.3
-    IL_000a: ceq
-    IL_000c: stloc.1      // V_1
-
-    IL_000d: ldloc.1      // V_1
-    IL_000e: brfalse.s    IL_0014
-
-    // [36 30 - 36 42]
-    IL_0010: ldc.i4.1
-    IL_0011: stloc.2      // V_2
-    IL_0012: br.s         IL_002e
-
-    // [37 13 - 37 86]
-    IL_0014: ldstr        "The program requires 3 arguments, but was {0}"
-    IL_0019: ldloc.0      // length
-    IL_001a: box          [System.Runtime]System.Int32
-    IL_001f: call         string [System.Runtime]System.String::Format(string, object)
-    IL_0024: call         void [System.Console]System.Console::WriteLine(string)
-    IL_0029: nop
-
-    // [38 13 - 38 26]
-    IL_002a: ldc.i4.0
-    IL_002b: stloc.2      // V_2
-    IL_002c: br.s         IL_002e
-
-    // [39 9 - 39 10]
-    IL_002e: ldloc.2      // V_2
-    IL_002f: ret
+    ldarg.0  
+    ldlen
+    ldc.i4.3
+    ceq
+    brfalse.s    message
+    ldc.i4.1
+    ret
+    message: ldstr        "The program requires 3 arguments, but was {0}"
+    ldarg.0
+    ldlen
+    box          [System.Runtime]System.Int32
+    call         string [System.Runtime]System.String::Format(string, object)
+    call         void [System.Console]System.Console::WriteLine(string)
+    ldc.i4.0
+    ret
 
   } // end of method Parser::CheckArgLength
 
@@ -256,43 +224,18 @@
     ) cil managed
   {
     .maxstack 2
-    .locals init (
-      [0] bool V_0,
-      [1] bool V_1
-    )
 
-    // [42 9 - 42 10]
-    IL_0000: nop
-
-    // [43 13 - 43 44]
-    IL_0001: ldarg.0      // arg
-    IL_0002: ldarg.1      // val
-    IL_0003: call         bool [System.Runtime]System.Int32::TryParse(string, int32&)
-    IL_0008: stloc.0      // V_0
-
-    IL_0009: ldloc.0      // V_0
-    IL_000a: brfalse.s    IL_0010
-
-    // [43 45 - 43 57]
-    IL_000c: ldc.i4.1
-    IL_000d: stloc.1      // V_1
-    IL_000e: br.s         IL_0025
-
-    // [44 13 - 44 59]
-    IL_0010: ldstr        "Value is not int: "
-    IL_0015: ldarg.0      // arg
-    IL_0016: call         string [System.Runtime]System.String::Concat(string, string)
-    IL_001b: call         void [System.Console]System.Console::WriteLine(string)
-    IL_0020: nop
-
-    // [45 13 - 45 26]
+    ldarg.0      // arg
+    ldarg.1      // val
+    call         bool [System.Runtime]System.Int32::TryParse(string, int32&)
+    brfalse.s    message
+    ldc.i4.1
+    ret
+    message: ldstr        "Value is not int: "
+    ldarg.0      // arg
+    call         string [System.Runtime]System.String::Concat(string, string)
+    call         void [System.Console]System.Console::WriteLine(string)
     IL_0021: ldc.i4.0
-    IL_0022: stloc.1      // V_1
-    IL_0023: br.s         IL_0025
-
-    // [46 9 - 46 10]
-    IL_0025: ldloc.1      // V_1
     IL_0026: ret
-
   } 
 } 
