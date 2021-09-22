@@ -1,9 +1,4 @@
-﻿// Type: HomeWork.Parser 
-// Assembly: Homework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-// MVID: DA6C4637-1FAE-489E-AA7F-591995C695BF
-// Location: C:\Users\user\Desktop\dotNetRepository\HomeWorkRepository\Homework\Homework\bin\Debug\net5.0\Homework.dll
-// Sequence point data from C:\Users\user\Desktop\dotNetRepository\HomeWorkRepository\Homework\Homework\bin\Debug\net5.0\Homework.pdb
-
+﻿
 .class public abstract sealed auto ansi beforefieldinit
   Homework2IL.Parser
     extends System.Object
@@ -299,5 +294,5 @@
     IL_0025: ldloc.1      // V_1
     IL_0026: ret
 
-  } // end of method Parser::TryParseArgOrQuit
-} // end of class HomeWork.Parser
+  } 
+} 
