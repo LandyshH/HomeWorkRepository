@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework", "Homework\Homework\Homework.csproj", "{EBD1B9D9-5E55-4D15-BE31-622910215EB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorTests", "Homework\CalculatorTests\CalculatorTests.csproj", "{D9D61E00-100D-42CA-BF58-9D72A07D5C97}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EBD1B9D9-5E55-4D15-BE31-622910215EB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBD1B9D9-5E55-4D15-BE31-622910215EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBD1B9D9-5E55-4D15-BE31-622910215EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBD1B9D9-5E55-4D15-BE31-622910215EB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9D61E00-100D-42CA-BF58-9D72A07D5C97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9D61E00-100D-42CA-BF58-9D72A07D5C97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9D61E00-100D-42CA-BF58-9D72A07D5C97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9D61E00-100D-42CA-BF58-9D72A07D5C97}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
