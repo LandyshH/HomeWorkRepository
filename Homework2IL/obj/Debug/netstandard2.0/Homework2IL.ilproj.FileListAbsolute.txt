@@ -1,5 +1,0 @@
-C:\Users\user\Desktop\dotNetRepository\HomeWorkRepository\Homework2IL\bin\Debug\netstandard2.0\Homework2IL.deps.json
-C:\Users\user\Desktop\dotNetRepository\HomeWorkRepository\Homework2IL\bin\Debug\netstandard2.0\Homework2IL.dll
-C:\Users\user\Desktop\dotNetRepository\HomeWorkRepository\Homework2IL\obj\Debug\netstandard2.0\Homework2IL.ilproj.AssemblyReference.cache
-C:\Users\user\Desktop\dotNetRepository\HomeWorkRepository\Homework2IL\obj\Debug\netstandard2.0\Homework2IL.ilproj.CoreCompileInputs.cache
-C:\Users\user\Desktop\dotNetRepository\HomeWorkRepository\Homework2IL\obj\Debug\netstandard2.0\Homework2IL.dll
