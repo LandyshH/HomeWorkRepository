@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "ga+xfn31rQ1BhtE2DkuS5W4KZCXd9C5VeQhtFe2FTZc5uXPHRC8qVKivi1JCgS/YlJVOjqnp4mOzk5tx++izdQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\user\\Desktop\\dotNetRepository\\HomeWorkRepository\\Homework2IL\\Homework2IL.ilproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\runtime.win-x64.microsoft.netcore.ilasm\\5.0.0\\runtime.win-x64.microsoft.netcore.ilasm.5.0.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\runtime.win-x64.microsoft.netcore.ildasm\\5.0.0\\runtime.win-x64.microsoft.netcore.ildasm.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

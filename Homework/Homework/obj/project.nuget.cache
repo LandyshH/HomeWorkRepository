@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "RKixUjpmrRvx5Y8s8vLrrtQVEHLjtFrj78tdAo+RzsidDa0+s4XiLTuoTl/XlQBYft3OphQoYDukbuuYGT/g0A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\user\\Desktop\\dotNetRepository\\HomeWorkRepository\\Homework\\Homework\\Homework.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\user\\.nuget\\packages\\codecov\\1.13.0\\codecov.1.13.0.nupkg.sha512"
+  ],
+  "logs": []
+}
