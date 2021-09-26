@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk.IL">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    </PropertyGroup>
+
+   <ItemGroup>
+      <Compile Include="Assembly.il" />
+      <Compile Include="CalculatorOperation.il" />
+      <Compile Include="CalculatorProblem.il" />
+      <Compile Include="HundledExceptions.il" />
+      <Compile Include="Parser.il" />
+      <Compile Include="Calculator.il" />
+   </ItemGroup>
+
+</Project>
