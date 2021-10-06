@@ -3,11 +3,11 @@ module Homework4.Parser
 open System
 let TryParseOperationOrQuit (arg: string, operation: outref<CalculatorOperation>) =
     operation <- match arg with
-    | "+" -> CalculatorOperation.Plus
-    | "-" -> CalculatorOperation.Minus
-    | "*" -> CalculatorOperation.Multiply
-    | "/" -> CalculatorOperation.Divide
-    | _ -> enum<CalculatorOperation>(0)
+                      | "+" -> CalculatorOperation.Plus
+                      | "-" -> CalculatorOperation.Minus
+                      | "*" -> CalculatorOperation.Multiply
+                      | "/" -> CalculatorOperation.Divide
+                      | _ -> enum<CalculatorOperation>(0)
     
     operation <> enum<CalculatorOperation>(0);;        
 let CheckArgLength (args: string[]) =
