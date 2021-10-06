@@ -4,7 +4,8 @@ module Homework4.Program
 let Main(args: string[]) =
     let mutable val1 = 0
     let mutable val2 = 0
-    let mutable operation = CalculatorOperation.Divide
+    let mutable operation = enum<CalculatorOperation>(0)
+    let mutable problem = CalculatorProblem(val1, operation, val2)
     let resultIs = Parser.ParseArguments(args, &val1, &operation, &val2)
     if resultIs <> HundledExceptions.Success then int resultIs
     else

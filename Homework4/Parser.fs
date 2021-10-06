@@ -21,5 +21,3 @@ let ParseArguments(args: string[], val1: outref<int>, operation: outref<Calculat
     elif TryParseOperationOrQuit(args.[1], &operation) = false then HundledExceptions.WrongOperation
     elif TryParseArgOrQuit(args.[0], &val1) = false || TryParseArgOrQuit(args.[2], &val2) = false then HundledExceptions.WrongArgFormatInt
     else HundledExceptions.Success
-     
-      
