@@ -14,11 +14,10 @@ namespace Tests4
         }
         
         [Test]
-        public void Program_WrongOperation_1Returned()
+        public void Program_WrongOperation_ExceptionReturned()
         {
             var args = new[]{"9", "^", "2"};
-            var result = Program.Main(args);
-            Assert.AreEqual(1, result);
+            Assert.Throws<HundledExceptions.WrongOperation>(() => Program.Main(args));
         }
     }
 }

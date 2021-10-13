@@ -1,6 +1,5 @@
-namespace Homework4
-type HundledExceptions =
-    | Success = 0
-    | WrongOperation = 1
-    | WrongArgLength = 2
-    | WrongArgFormatInt = 3
+module Homework4.HundledExceptions
+
+exception WrongOperation of string
+exception WrongArgLength of string
+exception WrongArgFormatInt of string
