@@ -7,7 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Codecov" Version="1.13.0" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
         <PackageReference Include="NUnit" Version="3.13.1" />
         <PackageReference Include="NUnit3TestAdapter" Version="3.17.0" />
@@ -15,8 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Homework2IL\Homework2IL.ilproj" />
-      <ProjectReference Include="..\Homework\Homework.csproj" />
+      <ProjectReference Include="..\Homework4\Homework4.fsproj" />
     </ItemGroup>
 
 </Project>
