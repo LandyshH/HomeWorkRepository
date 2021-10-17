@@ -1,7 +1,7 @@
 module Homework5.Parser
 
 open System
-let TryParseOperationOrQuit (val1: decimal, op: string, val2: decimal) =
+let TryParseOperationOrQuit (val1, op: string, val2) =
     match op with
         |"+" -> Ok (val1, CalculatorOperation.Plus, val2)
         | "-" -> Ok (val1, CalculatorOperation.Minus, val2)
@@ -24,14 +24,14 @@ let CheckArgLength (args: string[]) =
     | _ -> Error HundledExceptions.WrongArgLength
 
 let TryParseArgOrQuit (args: string[]) =
-    try
-        Ok (args.[0] |> decimal, args.[1], args.[2] |> decimal)
+    try       
+            Ok (args.[0] |> decimal, args.[1], args.[2] |> decimal)
     with
-        | _ -> Error HundledExceptions.WrongArgFormat
+            | _ -> Error HundledExceptions.WrongArgFormat
 
 let ParseArguments(args: string[]) =
     maybe{
-        let! temp = CheckArgLength args
+        let! temp = CheckArgLength args 
         let! temp2 = TryParseArgOrQuit temp
         let! result = TryParseOperationOrQuit temp2
         return result

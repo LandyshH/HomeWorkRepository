@@ -15,8 +15,8 @@ open Xunit
 [<InlineData(8.4646, 9, CalculatorOperation.Multiply, 76.1814)>]
 
 let CalculatorTest_Calculate (val1, val2, operation, expected) =
-    let actual = Calculator.Calculate(val1, operation, val2)
-    Assert.Equal(actual, expected, 12)
+    let actual = decimal (Calculator.Calculate(val1, operation, val2))
+    Assert.Equal(expected, actual, 10)
    
     
     
