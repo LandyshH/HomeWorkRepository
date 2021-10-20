@@ -24,7 +24,7 @@ namespace Tests6
 		[InlineData("a", "3.1", "Plus", "\"Could not parse value 'a' to type System.Decimal.\"")]
 		[InlineData("9.31", "b", "Minus",  "\"Could not parse value 'b' to type System.Decimal.\"")]
 		[InlineData("56.64", "7.8", "Not operation",  "\"Wrong operation.\"")]
-		public async Task Program_WrongCalculateProblem_ResultReturned(string val1, string val2, string operation, string expected)
+		public async Task Program_WrongCalculateProblem_ErrorReturned(string val1, string val2, string operation, string expected)
 		{
 			var httpClient = new HttpClient();
 			var response = await httpClient.GetAsync($"http://localhost:5000/calculate?v1={val1}&Operation={operation}&v2={val2}");
