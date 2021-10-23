@@ -1,5 +1,4 @@
-open System
-open Homework6
+module Homework6.Program
 open Homework6.InputProblem
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
@@ -34,20 +33,16 @@ let webApp =
     choose [
         route "/ping" >=> text "pong"
         route "/calculate" >=> CalculatorHandler
-        //route "/"       >=> htmlFile "/pages/index.html" 
         setStatusCode 404 >=> text "Not found"]
      
-let add v = v.V1 + v.V2
 
 type Startup() =
     member __.ConfigureServices (services : IServiceCollection) =
-        // Register default Giraffe dependencies
         services.AddGiraffe() |> ignore
 
     member __.Configure (app : IApplicationBuilder)
                         (env : IHostEnvironment)
                         (loggerFactory : ILoggerFactory) =
-        // Add Giraffe to the ASP.NET Core pipeline
         app.UseGiraffe webApp
         app.Use |> ignore
 

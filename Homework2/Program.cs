@@ -5,9 +5,9 @@ using Homework2IL;
 
 namespace Homework2
 {
-    class Program
+    public static class Program
     {
-        static int Main(string[] args)
+        public static int Main(string[] args)
         {
             var resultIs = Parser.ParseArguments(args, out var problem);
             if (resultIs != HundledExceptions.Success) return (int)resultIs;
