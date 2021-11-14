@@ -1,0 +1,8 @@
+﻿@model UserProfile
+
+@using (Html.BeginForm())
+{
+    @Html.OwnEditorForModel()
+   // <select asp-for="Sex" asp-items="Html.GetEnumSelectList<Sex>()" class="form-control"></select>
+    <input type="submit" value="Отправить">
+}
