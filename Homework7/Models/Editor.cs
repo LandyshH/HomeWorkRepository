@@ -89,9 +89,6 @@ namespace WebApplication.Models
                 {
                     Attributes =
                     {
-                       // {"asp-for", property.Name},
-                       // {"asp-items", $"Html.GetEnumSelectList<{property.PropertyType}>()"},
-                       // {"class", "form-control"}, {"value", value}
                        {"id", property.Name},
                        {"name", property.Name}
                     }
