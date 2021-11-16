@@ -19,10 +19,10 @@ namespace Tests8
         }
         
         [Theory]
-        [InlineData("a", "4", "Plus", "\"Wrong parameter\"")]
-        [InlineData("1000", "b", "Minus",  "\"Wrong parameter\"")]
-        [InlineData("63", "3", "pepe", "\"Wrong operation\"")]
-        [InlineData("63", "0", "Divide", "\"Infinity\"")]
+        [InlineData("a", "4", "Plus", "Wrong parameter")]
+        [InlineData("1000", "b", "Minus",  "Wrong parameter")]
+        [InlineData("63", "3", "pepe", "Wrong operation")]
+        [InlineData("63", "0", "Divide", "Infinity")]
         [InlineData("99", "7", "Minus",  "92")]
         public void Calculate_IncorrectArguments_ExceptionStringReturned(string val1, string val2, string operation, string expected)
         {
