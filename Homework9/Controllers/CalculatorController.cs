@@ -36,9 +36,9 @@ namespace Homework9.Controllers
         {
             var first = Task.Run(() => Visit(node.Left));
             var second = Task.Run(() => Visit(node.Right));
+            Task.Delay(1000).GetAwaiter().GetResult();
             Task.WhenAll(first, second);
-            
-            
+
             var firstResult =(ConstantExpression) first.Result;
             var secondResult = (ConstantExpression) second.Result;
 
@@ -94,8 +94,6 @@ namespace Homework9.Controllers
                 case "/":
                     stack.Push(Expression.Divide(val2, val1));
                     break;
-                default:
-                    throw new ArgumentException();
             }
         }
         
