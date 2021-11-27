@@ -64,7 +64,7 @@ namespace Homework9.Controllers
         public string Calculate(string expression)
         {
             var exp = ConvertToExpressionTree(expression);
-            var res = exp == Error ? Error.ToString() : new CalculatorVisitor().Visit(exp).ToString().InvariantCulture;
+            var res = exp == Error ? Error.ToString() : new CalculatorVisitor().Visit(exp).ToString();
             return res;
         }
 
