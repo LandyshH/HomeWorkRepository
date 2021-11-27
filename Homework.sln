@@ -26,6 +26,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests2", "Tests2\Tests2.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework7", "Homework7\Homework7.csproj", "{399384CE-6BC5-45F3-B210-D5661D2901D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homewrok8", "Homewrok8\Homewrok8.csproj", "{45E4BBD8-EEE4-4A16-9E70-9ABD6F493CCB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheoryTests8", "TheoryTests8\TheoryTests8.csproj", "{BAA99100-F408-42E2-B2DD-01641E714841}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests8", "IntegrationTests8\IntegrationTests8.csproj", "{360B2D2A-C0E3-4FA2-BFCD-BE144BA77227}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,5 +98,17 @@ Global
 		{399384CE-6BC5-45F3-B210-D5661D2901D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{399384CE-6BC5-45F3-B210-D5661D2901D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{399384CE-6BC5-45F3-B210-D5661D2901D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45E4BBD8-EEE4-4A16-9E70-9ABD6F493CCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45E4BBD8-EEE4-4A16-9E70-9ABD6F493CCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45E4BBD8-EEE4-4A16-9E70-9ABD6F493CCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45E4BBD8-EEE4-4A16-9E70-9ABD6F493CCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAA99100-F408-42E2-B2DD-01641E714841}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAA99100-F408-42E2-B2DD-01641E714841}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAA99100-F408-42E2-B2DD-01641E714841}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAA99100-F408-42E2-B2DD-01641E714841}.Release|Any CPU.Build.0 = Release|Any CPU
+		{360B2D2A-C0E3-4FA2-BFCD-BE144BA77227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{360B2D2A-C0E3-4FA2-BFCD-BE144BA77227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{360B2D2A-C0E3-4FA2-BFCD-BE144BA77227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{360B2D2A-C0E3-4FA2-BFCD-BE144BA77227}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
