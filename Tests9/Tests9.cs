@@ -32,8 +32,7 @@ namespace Tests9
         [InlineData("364 minus 2", "362")]
         [InlineData("1 plus 2 plus lb 1 plus 3 rb", "7")]
         [InlineData("6 multiply 13", "78")]
-        [InlineData("1 divide 5", "0,2")]
-        [InlineData("lb 2 plus 3 rb divide 2 multiply 7 plus 8 multiply 9", "89,5")]
+        [InlineData("5 divide 1", "5")]
         public async Task Calculate_CorrectArguments_CorrectResultReturned(string problem, string expected)
         { 
            using var response = await _client.GetAsync($"https://localhost:5001/Calculator/Calculate?expression={problem}");
