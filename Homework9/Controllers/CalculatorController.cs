@@ -29,19 +29,21 @@ namespace Homework9.Controllers
             return arg is "+" or "-" or "/" or "*";
         }
     }
+       //var first = Task.Run(() => Visit(node.Left));
+       //var second = Task.Run(() => Visit(node.Right));
+    // Task.Delay(1000);
+    // Task.WhenAll(first, second);
 
+    // var firstResult =(ConstantExpression) first.Result;
+    // var secondResult = (ConstantExpression) second.Result;
     public class CalculatorVisitor : ExpressionVisitor
     {
         protected override Expression VisitBinary(BinaryExpression node)
         {
-            var first = Task.Run(() => Visit(node.Left));
-            var second = Task.Run(() => Visit(node.Right));
-            Task.Delay(1000).GetAwaiter().GetResult();
-            Task.WhenAll(first, second);
-
-            var firstResult =(ConstantExpression) first.Result;
-            var secondResult = (ConstantExpression) second.Result;
-
+            var first = Visit(node.Left);
+            var second = Visit(node.Right);
+            var firstResult = (ConstantExpression) first;
+            var secondResult = (ConstantExpression) second;
             var val1 = (double) firstResult.Value;
             var val2 = (double) secondResult.Value;
 
@@ -115,7 +117,8 @@ namespace Homework9.Controllers
                     }
                     else if (token.IsOperation())
                     {
-                        while (operationStack.Count != 0 && operationStack.Peek() != "(" && Priority[operationStack.Peek()] >= Priority[token])
+                        while (operationStack.Count != 0 && operationStack.Peek() != "(" 
+                                                         && Priority[operationStack.Peek()] >= Priority[token])
                         {
                             GenerateExpression(operationStack.Pop(), outputStack);
                         }
