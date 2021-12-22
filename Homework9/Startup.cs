@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Homework9.CalculatorDependency;
+using Homework9.ParallelCalculator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +26,8 @@ namespace Homework9
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddScoped<ICalculatorDependency, CalculatorDependency.CalculatorDependency>();
+            services.AddScoped<IParallelCalculator, ParallelCalculator.ParallelCalculator>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
