@@ -76,6 +76,12 @@ namespace Homework9.Controllers
             {"*", 2}
         };
 
+        public CalculatorController(ICalculatorDependency calculatorDependency, IParallelCalculator parallelCalculator)
+        {
+            _calculatorDependency = calculatorDependency;
+            _parallelCalculator = parallelCalculator;
+        }
+
         public void GenerateExpression(string op, Stack<Expression> stack)
         {
             var val1 = stack.Pop();
