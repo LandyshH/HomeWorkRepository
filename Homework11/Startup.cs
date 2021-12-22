@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Homework11.Calculator;
+using Homework11.CalculatorDependency;
 using Homework11.Database;
+using Homework11.ExceptionHandler;
+using Homework11.ParallelCalculator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,9 +31,12 @@ namespace Homework11
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddLogging();
-            services.AddScoped<IExceptionHandler, ExceptionHandler>();
-            services.AddTransient<IExpressionConverter, ExpressionConverter>();
-            services.AddTransient<ICacheCalculator, CalculatorCache>();
+            services.AddScoped<IExceptionHandler, ExceptionHandler.ExceptionHandler>();
+            services.AddScoped<ParallelCalculator.ParallelCalculator>();
+            services.AddScoped<ICalculatorDependency, CalculatorDependency.CalculatorDependency>();
+            services.AddScoped<IParallelCalculator, ParallelCalculatorCache>(provider =>
+                new ParallelCalculatorCache(provider.GetRequiredService<ApplicationContext>(),
+                    provider.GetRequiredService<ParallelCalculator.ParallelCalculator>()));
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationContext>(options => 
                 options.UseNpgsql(Configuration.GetConnectionString("DbCalculations")));

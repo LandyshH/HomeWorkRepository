@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Homework10.Calculator;
+using Homework10.CalculatorDependency;
 using Homework10.Database;
+using Homework10.ParallelCalculator;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,8 +28,11 @@ namespace Homework10
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IExpressionConverter, ExpressionConverter>();
-            services.AddTransient<ICacheCalculator, CalculatorCache>();
+            services.AddScoped<ParallelCalculator.ParallelCalculator>();
+            services.AddScoped<ICalculatorDependency, CalculatorDependency.CalculatorDependency>();
+            services.AddScoped<IParallelCalculator, ParallelCalculatorCache>(provider =>
+                new ParallelCalculatorCache(provider.GetRequiredService<ApplicationContext>(),
+                    provider.GetRequiredService<ParallelCalculator.ParallelCalculator>()));
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationContext>(options => 
                 options.UseNpgsql(Configuration.GetConnectionString("DbCalculations")));

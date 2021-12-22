@@ -1,8 +1,9 @@
 ﻿using System;
+using Homework11.Calculator;
 using Homework11.Controllers;
 using Microsoft.Extensions.Logging;
 
-namespace Homework11.Calculator
+namespace Homework11.ExceptionHandler
 {
     public sealed class ExceptionHandler : IExceptionHandler
     {
@@ -17,16 +18,19 @@ namespace Homework11.Calculator
             Handle((dynamic) exception);
         }
 
-        public void Handle(NullReferenceException exception)
+        private void Handle(NullReferenceException exception)
         {
-            _logger.LogInformation(exception.Message);
+            _logger.LogCritical(exception.Message);
         }
-        public void Handle(ArgumentException exception)
+
+        private void Handle(ArgumentException exception)
         {
-            _logger.LogInformation(exception.Message);
+            _logger.LogError(exception.Message);
         }
-        public void Handle(InvalidOperationException exception)
+
+        private void Handle(InvalidOperationException exception)
         {
+            Console.Beep();
             _logger.LogInformation(exception.Message);
         }
        

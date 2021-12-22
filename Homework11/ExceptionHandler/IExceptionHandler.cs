@@ -1,7 +1,6 @@
 ﻿using System;
-using Microsoft.Extensions.Logging;
 
-namespace Homework11.Calculator
+namespace Homework11.ExceptionHandler
 {
     public interface IExceptionHandler 
     {

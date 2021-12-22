@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Homework10.ParallelCalculator
+namespace Homework11.ParallelCalculator
 {
     public interface IParallelCalculator
     {

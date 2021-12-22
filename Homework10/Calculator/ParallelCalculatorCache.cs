@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Homework10.Controllers;
 using Homework10.Database;
 using Homework10.Database.Models;
 using Homework10.ParallelCalculator;
@@ -31,18 +32,17 @@ namespace Homework10.Calculator
         public async Task<double> CalculateAsync(Expression current,
             IReadOnlyDictionary<Expression, Expression[]> dependencies)
         {
-           // var result = Calculator.CalculateAsync(current, dependencies);
-           var result = 0;
+            var result = Calculator.CalculateAsync(current, dependencies);
             
             var calculation = new Calculation
             {
                 Expression = current.ToString(),
-                Result = (result).ToString(CultureInfo.InvariantCulture)
+                Result = (await result).ToString(CultureInfo.InvariantCulture)
             };
             
             ApplicationContext.Calculations.Add(calculation);
             await ApplicationContext.SaveChangesAsync();
-            return  result;
+            return await result;
         }
     }
 }
