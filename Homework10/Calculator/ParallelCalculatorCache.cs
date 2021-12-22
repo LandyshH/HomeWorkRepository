@@ -14,14 +14,15 @@ namespace Homework10.Calculator
 {
     public class ParallelCalculatorCache : IParallelCalculator
     {
-        public ParallelCalculatorCache(ApplicationContext applicationContext, ParallelCalculator.ParallelCalculator calculator)
+        public ParallelCalculatorCache(ApplicationContext applicationContext, 
+            ParallelCalculator.ParallelCalculator calculator)
         {
             ApplicationContext = applicationContext;
             Calculator = calculator;
         }
 
-        private ApplicationContext ApplicationContext { get; set; }
-        public ParallelCalculator.ParallelCalculator Calculator { get; set; }
+        private ApplicationContext ApplicationContext { get; }
+        private ParallelCalculator.ParallelCalculator Calculator { get; }
         
         public Task<double> CalculateAsync(Dictionary<Expression, Expression[]> dependencies)
         {
@@ -32,6 +33,7 @@ namespace Homework10.Calculator
             IReadOnlyDictionary<Expression, Expression[]> dependencies)
         {
             var result = Calculator.CalculateAsync(current, dependencies);
+            
             var calculation = new Calculation
             {
                 Expression = current.ToString(),
