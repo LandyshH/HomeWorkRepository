@@ -31,7 +31,7 @@ namespace Homework10
             services.AddScoped<ParallelCalculator.ParallelCalculator>();
             services.AddScoped<ICalculatorDependency, CalculatorDependency.CalculatorDependency>();
             services.AddScoped<IParallelCalculator, ParallelCalculatorCache>(provider =>
-                new ParallelCalculatorCache(provider.GetRequiredService<ApplicationContext>(),
+                new ParallelCalculatorCache(
                     provider.GetRequiredService<ParallelCalculator.ParallelCalculator>()));
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationContext>(options => 
