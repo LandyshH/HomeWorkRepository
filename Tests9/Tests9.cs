@@ -48,7 +48,7 @@ namespace Tests9
         [InlineData("lb12 a 7rb")]
         public async Task Calculate_IncorrectArguments_ErrorStringReturned(string problem)
         {
-            const string expected = "() => \"Error\"";
+            const string expected = "Error";
             using var response = await _client.GetAsync($"https://localhost:5001/Calculator/Calculate?expression={problem}");
             var actual = await response.Content.ReadAsStringAsync();
             Assert.Equal(expected, actual);
