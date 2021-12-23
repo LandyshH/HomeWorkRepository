@@ -32,8 +32,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheoryTests8", "TheoryTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationTests8", "IntegrationTests8\IntegrationTests8.csproj", "{360B2D2A-C0E3-4FA2-BFCD-BE144BA77227}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework9", "Homework9\Homework9.csproj", "{FE812956-89BB-445E-A5B9-779CE07591A3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests9", "Tests9\Tests9.csproj", "{1747432B-7B57-4FB8-AC46-DA1660A5872A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework11", "Homework11\Homework11.csproj", "{9C04595B-5377-4EEB-BB74-E6888E0CA265}"
@@ -43,6 +41,7 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hw13.benchmark", "hw13.benchmark\hw13.benchmark.csproj", "{50F749D8-3CE4-481C-973A-A71341C9A101}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hw13.Tests", "hw13.Tests\hw13.Tests.csproj", "{1EBC14FC-B272-442E-BAEF-32C2DEDC6BF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework9", "Homework9\Homework9.csproj", "{0B356A29-15F6-41E4-AD52-D7264341A71A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -146,5 +145,13 @@ Global
 		{1EBC14FC-B272-442E-BAEF-32C2DEDC6BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EBC14FC-B272-442E-BAEF-32C2DEDC6BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EBC14FC-B272-442E-BAEF-32C2DEDC6BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFF51214-1127-404D-816F-F0D92C591AF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFF51214-1127-404D-816F-F0D92C591AF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFF51214-1127-404D-816F-F0D92C591AF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFF51214-1127-404D-816F-F0D92C591AF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B356A29-15F6-41E4-AD52-D7264341A71A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B356A29-15F6-41E4-AD52-D7264341A71A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B356A29-15F6-41E4-AD52-D7264341A71A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B356A29-15F6-41E4-AD52-D7264341A71A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

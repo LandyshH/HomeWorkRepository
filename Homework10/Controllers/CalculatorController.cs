@@ -70,8 +70,6 @@ namespace Homework10.Controllers
         {
             var outputStack = new Stack<Expression>();
             var operationStack = new Stack<string>();
-            try
-            {
                 var tokens = expression
                     .LeadToCorrectView()
                     .ParseBySpace();
@@ -113,12 +111,6 @@ namespace Homework10.Controllers
                 }
                 
                 return outputStack.Pop();
-            }
-            catch (Exception)
-            {
-                Expression<Func<string>> e = () => "Error";
-                return e;
-            }
         }
     }
 }

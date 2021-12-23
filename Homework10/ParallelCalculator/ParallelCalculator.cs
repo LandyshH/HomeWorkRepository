@@ -14,7 +14,6 @@ namespace Homework10.ParallelCalculator
         {
             return CalculateAsync(dependencies.First().Key, dependencies);
         }
-
         private readonly ILogger<ParallelCalculator> _logger;
 
         public ParallelCalculator(ILogger<ParallelCalculator> logger)
@@ -40,8 +39,8 @@ namespace Homework10.ParallelCalculator
             var arr = await Task.WhenAll(left, right);
             return Calculate(arr[0], current.NodeType, arr[1]);
         }
-
-        private static double Calculate(double v1, ExpressionType expressionType, double v2)
+        
+        public static double Calculate(double v1, ExpressionType expressionType, double v2)
         {
             return expressionType switch
             {
