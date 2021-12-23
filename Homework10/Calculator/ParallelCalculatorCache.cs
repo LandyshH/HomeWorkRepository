@@ -22,7 +22,8 @@ namespace Homework10.Calculator
         }
 
         private ApplicationContext ApplicationContext { get; }
-        private ParallelCalculator.ParallelCalculator Calculator { get; }
+
+        private IParallelCalculator Calculator { get; }
         
         public Task<double> CalculateAsync(Dictionary<Expression, Expression[]> dependencies)
         {
@@ -32,17 +33,25 @@ namespace Homework10.Calculator
         public async Task<double> CalculateAsync(Expression current,
             IReadOnlyDictionary<Expression, Expression[]> dependencies)
         {
-            var result = Calculator.CalculateAsync(current, dependencies);
-            
-            var calculation = new Calculation
+            var dbcalculation = ApplicationContext.Calculations
+                .FirstOrDefault(x => x.Expression == current.ToString());
+            var isExist = dbcalculation  is not null ;
+
+            if (!isExist)
             {
-                Expression = current.ToString(),
-                Result = (await result).ToString(CultureInfo.InvariantCulture)
-            };
-            
-            ApplicationContext.Calculations.Add(calculation);
-            await ApplicationContext.SaveChangesAsync();
-            return await result;
+                var result = await Calculator.CalculateAsync(current, dependencies);
+                var calculation = new Calculation
+                {
+                    Expression = current.ToString(),
+                    Result = result.ToString(CultureInfo.InvariantCulture)
+                };
+                ApplicationContext.Calculations.Add(calculation);
+                await ApplicationContext.SaveChangesAsync();
+                return result;
+            }
+
+            var res = double.Parse(dbcalculation.Result);
+            return res;
         }
     }
 }
