@@ -35,8 +35,11 @@ namespace Homework11
             services.AddScoped<ParallelCalculator.ParallelCalculator>();
             services.AddScoped<ICalculatorDependency, CalculatorDependency.CalculatorDependency>();
             services.AddScoped<IParallelCalculator, ParallelCalculatorCache>(provider =>
-                new ParallelCalculatorCache(provider.GetRequiredService<ParallelCalculator.ParallelCalculator>()));
+                new ParallelCalculatorCache(provider.GetRequiredService<ApplicationContext>(),
+                    provider.GetRequiredService<ParallelCalculator.ParallelCalculator>()));
             services.AddControllersWithViews();
+            services.AddDbContext<ApplicationContext>(options => 
+                options.UseNpgsql(Configuration.GetConnectionString("DbCalculations")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

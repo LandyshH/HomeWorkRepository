@@ -41,7 +41,7 @@ namespace Homework10.ParallelCalculator
             return Calculate(arr[0], current.NodeType, arr[1]);
         }
 
-        private static double Calculate(double v1, ExpressionType expressionType, double v2)
+        public static double Calculate(double v1, ExpressionType expressionType, double v2)
         {
             return expressionType switch
             {

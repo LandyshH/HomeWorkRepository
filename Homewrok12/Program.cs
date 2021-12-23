@@ -1,14 +1,13 @@
 ﻿using System;
 using BenchmarkDotNet.Running;
 
-namespace Homework13
+namespace Homewrok12
 {
     class Program
     {
         static void Main(string[] args)
         {
-            BenchmarkRunner.Run<Tests>();
-            Console.WriteLine("Hello World!");
+            BenchmarkRunner.Run<BenchmarkHw12>();
         }
     }
 }
