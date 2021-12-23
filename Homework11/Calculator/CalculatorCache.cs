@@ -1,40 +1,54 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Linq.Expressions;
-using Homework11.Controllers;
+using System.Threading.Tasks;
 using Homework11.Database;
 using Homework11.Database.Models;
-using Microsoft.EntityFrameworkCore;
+using Homework11.ParallelCalculator;
 
 namespace Homework11.Calculator
 {
-    public class CalculatorCache : ICacheCalculator
+    public class ParallelCalculatorCache : IParallelCalculator
     {
-        public IExpressionConverter ExpressionConverter { get; }
-        public ApplicationContext ApplicationContext { get; }
-        public CalculatorCache(ApplicationContext applicationContext, IExpressionConverter expressionConverter)
+        public ParallelCalculatorCache(ApplicationContext applicationContext, 
+            ParallelCalculator.ParallelCalculator calculator)
         {
             ApplicationContext = applicationContext;
-            ExpressionConverter = expressionConverter;
+            Calculator = calculator;
         }
 
-        public string TryCalculateWithCache(string expression)
+        private ApplicationContext ApplicationContext { get; }
+
+        private IParallelCalculator Calculator { get; }
+        
+        public Task<double> CalculateAsync(Dictionary<Expression, Expression[]> dependencies)
         {
-            var calculation = ApplicationContext.Calculations
-                .FirstOrDefault(c => c.Expression == expression);
-            if (calculation != null)
+            return CalculateAsync(dependencies.First().Key, dependencies);
+        }
+
+        public async Task<double> CalculateAsync(Expression current,
+            IReadOnlyDictionary<Expression, Expression[]> dependencies)
+        {
+            var dbcalculation = ApplicationContext.Calculations
+                .FirstOrDefault(x => x.Expression == current.ToString());
+            var isExist = dbcalculation  is not null ;
+
+            if (!isExist)
             {
-                var res = double.Parse(calculation.Result);
-                var result = Expression.Constant(res);
-                return result.ToString();
-            }
-            else
-            {
-                var result = ExpressionConverter.TryCalculateExpressionTree(expression);
-                var dbResult = new Calculation{Expression = expression, Result = result};
-                if (result != "Error") ApplicationContext.Calculations.Add(dbResult);
-                ApplicationContext.SaveChanges();
+                var result = await Calculator.CalculateAsync(current, dependencies);
+                var calculation = new Calculation
+                {
+                    Expression = current.ToString(),
+                    Result = result.ToString(CultureInfo.InvariantCulture)
+                };
+                ApplicationContext.Calculations.Add(calculation);
+                await ApplicationContext.SaveChangesAsync();
                 return result;
             }
+
+            var res = double.Parse(dbcalculation.Result);
+            return res;
         }
     }
 }
