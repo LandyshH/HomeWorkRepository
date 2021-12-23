@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Linq.Expressions;
@@ -14,14 +15,12 @@ namespace Homework11.Calculator
 {
     public class ParallelCalculatorCache : IParallelCalculator
     {
-        public ParallelCalculatorCache(ApplicationContext applicationContext, 
-            ParallelCalculator.ParallelCalculator calculator)
+        public ParallelCalculatorCache(ParallelCalculator.ParallelCalculator calculator)
         {
-            ApplicationContext = applicationContext;
             Calculator = calculator;
         }
 
-        private ApplicationContext ApplicationContext { get; }
+        private readonly ConcurrentDictionary<string, double> _cache = new();
         private ParallelCalculator.ParallelCalculator Calculator { get; }
         
         public Task<double> CalculateAsync(Dictionary<Expression, Expression[]> dependencies)
@@ -32,17 +31,8 @@ namespace Homework11.Calculator
         public async Task<double> CalculateAsync(Expression current,
             IReadOnlyDictionary<Expression, Expression[]> dependencies)
         {
-            var result = Calculator.CalculateAsync(current, dependencies);
-            
-            var calculation = new Calculation
-            {
-                Expression = current.ToString(),
-                Result = (await result).ToString(CultureInfo.InvariantCulture)
-            };
-            
-            ApplicationContext.Calculations.Add(calculation);
-            await ApplicationContext.SaveChangesAsync();
-            return await result;
+            var result = _cache.GetOrAdd(current.ToString(), await Calculator.CalculateAsync(current, dependencies));
+            return result;
         }
     }
 }
