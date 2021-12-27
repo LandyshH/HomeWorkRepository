@@ -33,7 +33,7 @@ namespace Homework10
             services.AddScoped<IParallelCalculator, ParallelCalculatorCache>(provider =>
                 new ParallelCalculatorCache(provider.GetRequiredService<ApplicationContext>(),
                     provider.GetRequiredService<ParallelCalculator.ParallelCalculator>()));
-            //services.AddTransient<IParallelCalculator,ParallelCalculator.ParallelCalculator>();
+
             services.AddControllersWithViews();
             services.AddDbContext<ApplicationContext>(options => 
                 options.UseNpgsql(Configuration.GetConnectionString("DbCalculations")));

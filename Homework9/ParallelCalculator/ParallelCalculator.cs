@@ -10,19 +10,19 @@ namespace Homework9.ParallelCalculator
 {
     public class ParallelCalculator : IParallelCalculator
     {
-        public Task<double> CalculateAsync(Dictionary<Expression, Expression[]> dependencies)
-        {
-            return CalculateAsync(dependencies.First().Key, dependencies);
-        }
-
         private readonly ILogger<ParallelCalculator> _logger;
 
         public ParallelCalculator(ILogger<ParallelCalculator> logger)
         {
             _logger = logger;
         }
+        
+        public Task<double> CalculateAsync(Dictionary<Expression, Expression[]> dependencies)
+        {
+            return CalculateAsync(dependencies.First().Key, dependencies);
+        }
 
-        private async Task<double> CalculateAsync(Expression current,
+        public async Task<double> CalculateAsync(Expression current,
             IReadOnlyDictionary<Expression, Expression[]> dependencies)
         {
             if (dependencies[current] == null)
@@ -41,7 +41,7 @@ namespace Homework9.ParallelCalculator
             return Calculate(arr[0], current.NodeType, arr[1]);
         }
 
-        private static double Calculate(double v1, ExpressionType expressionType, double v2)
+        public static double Calculate(double v1, ExpressionType expressionType, double v2)
         {
             return expressionType switch
             {

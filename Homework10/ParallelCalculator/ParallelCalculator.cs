@@ -10,16 +10,16 @@ namespace Homework10.ParallelCalculator
 {
     public class ParallelCalculator : IParallelCalculator
     {
+        public Task<double> CalculateAsync(Dictionary<Expression, Expression[]> dependencies)
+        {
+            return CalculateAsync(dependencies.First().Key, dependencies);
+        }
+
         private readonly ILogger<ParallelCalculator> _logger;
 
         public ParallelCalculator(ILogger<ParallelCalculator> logger)
         {
             _logger = logger;
-        }
-        
-        public Task<double> CalculateAsync(Dictionary<Expression, Expression[]> dependencies)
-        {
-            return CalculateAsync(dependencies.First().Key, dependencies);
         }
 
         public async Task<double> CalculateAsync(Expression current,
