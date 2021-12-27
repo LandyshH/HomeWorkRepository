@@ -68,7 +68,7 @@ namespace hw12.Tests
             string[] operations =
                 {"Plus", "Minus", "Divide", "Multiply"};
             Random rnd = new Random();
-            for (var i = 1; i < 101; i++)
+            for (var i = 1; i < 100001; i++)
             {
                 var operation = operations[rnd.Next(0, 4)];
                 yield return new object[] {i + operation + i};
