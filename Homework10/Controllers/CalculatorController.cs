@@ -70,6 +70,7 @@ namespace Homework10.Controllers
         {
             var outputStack = new Stack<Expression>();
             var operationStack = new Stack<string>();
+            
                 var tokens = expression
                     .LeadToCorrectView()
                     .ParseBySpace();

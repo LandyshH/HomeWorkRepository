@@ -1,4 +1,4 @@
-﻿using System.Collections.Concurrent;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -14,7 +14,7 @@ namespace Homework10.Calculator
             Calculator = calculator;
         }
 
-        private static readonly ConcurrentDictionary<string, double> Cache = new();
+        private readonly ConcurrentDictionary<string, double> _cache = new();
         private ParallelCalculator.ParallelCalculator Calculator { get; }
 
         public Task<double> CalculateAsync(Dictionary<Expression, Expression[]> dependencies)
@@ -25,15 +25,15 @@ namespace Homework10.Calculator
         public async Task<double> CalculateAsync(Expression current,
             IReadOnlyDictionary<Expression, Expression[]> dependencies)
         {
-            var isExist = Cache.ContainsKey(current.ToString());
+            var isExist = _cache.ContainsKey(current.ToString());
             if (!isExist)
             {
-                var result = Cache
+                var result = _cache
                     .GetOrAdd(current.ToString(), await Calculator.CalculateAsync(current, dependencies));
                 return result;
             }
             
-            var cacheCalculation = Cache
+            var cacheCalculation = _cache
                 .FirstOrDefault(x =>x.Key == current.ToString()).Value;
             
          return cacheCalculation;
