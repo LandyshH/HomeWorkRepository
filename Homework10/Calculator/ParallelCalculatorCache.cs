@@ -14,7 +14,7 @@ namespace Homework10.Calculator
             Calculator = calculator;
         }
 
-        private readonly ConcurrentDictionary<string, double> _cache = new();
+        private static readonly ConcurrentDictionary<string, double> Cache = new();
         private ParallelCalculator.ParallelCalculator Calculator { get; }
 
         public Task<double> CalculateAsync(Dictionary<Expression, Expression[]> dependencies)
@@ -25,8 +25,18 @@ namespace Homework10.Calculator
         public async Task<double> CalculateAsync(Expression current,
             IReadOnlyDictionary<Expression, Expression[]> dependencies)
         {
-            var result = _cache.GetOrAdd(current.ToString(), await Calculator.CalculateAsync(current, dependencies));
-            return result;
+            var isExist = Cache.ContainsKey(current.ToString());
+            if (!isExist)
+            {
+                var result = Cache
+                    .GetOrAdd(current.ToString(), await Calculator.CalculateAsync(current, dependencies));
+                return result;
+            }
+            
+            var cacheCalculation = Cache
+                .FirstOrDefault(x =>x.Key == current.ToString()).Value;
+            
+         return cacheCalculation;
         }
     }
 }

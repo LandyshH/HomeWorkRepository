@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using Homework11;
@@ -34,7 +35,7 @@ namespace hw12.Tests
             _factory = factory;
         }
 
-        [DotMemoryUnit(FailIfRunWithoutSupport = true, CollectAllocations = true)]
+        [DotMemoryUnit(FailIfRunWithoutSupport = false, CollectAllocations = true)]
         [Theory]
         [MemberData(nameof(GenerateData))]
         public void CalculatorController_ReturnCorrectResult(string op)
@@ -60,12 +61,17 @@ namespace hw12.Tests
                         .AllocatedMemory.SizeInBytes < 2000000);
             });
         }
-
+        
+        
         private static IEnumerable<object[]> GenerateData()
         {
-            for (var i = 0; i < 100; i++)
+            string[] operations =
+                {"Plus", "Minus", "Divide", "Multiply"};
+            Random rnd = new Random();
+            for (var i = 1; i < 10000001; i++)
             {
-                yield return new object[] {i + "Plus" + i};
+                var operation = operations[rnd.Next(0, 4)];
+                yield return new object[] {i + operation + i};
             }
         }
     }
