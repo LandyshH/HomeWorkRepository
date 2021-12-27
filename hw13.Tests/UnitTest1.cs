@@ -34,7 +34,7 @@ namespace hw12.Tests
             _factory = factory;
         }
 
-        [DotMemoryUnit(FailIfRunWithoutSupport = true, CollectAllocations = true)]
+        [DotMemoryUnit(FailIfRunWithoutSupport = false, CollectAllocations = true)]
         [Theory]
         [MemberData(nameof(GenerateData))]
         public void CalculatorController_ReturnCorrectResult(string op)
