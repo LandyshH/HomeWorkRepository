@@ -22,7 +22,7 @@ namespace Homework10.Calculator
         }
 
         private ApplicationContext ApplicationContext { get; }
-        
+
         private IParallelCalculator Calculator { get; }
         
         public Task<double> CalculateAsync(Dictionary<Expression, Expression[]> dependencies)
