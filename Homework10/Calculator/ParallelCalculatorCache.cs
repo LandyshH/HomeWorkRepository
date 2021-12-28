@@ -1,30 +1,22 @@
-﻿using System.Collections.Generic;
-using System.Globalization;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Threading;
 using System.Threading.Tasks;
-using Homework10.Controllers;
-using Homework10.Database;
-using Homework10.Database.Models;
 using Homework10.ParallelCalculator;
-using Microsoft.EntityFrameworkCore;
 
 namespace Homework10.Calculator
 {
     public class ParallelCalculatorCache : IParallelCalculator
     {
-        public ParallelCalculatorCache(ApplicationContext applicationContext, 
-            ParallelCalculator.ParallelCalculator calculator)
+        public ParallelCalculatorCache(ParallelCalculator.ParallelCalculator calculator)
         {
-            ApplicationContext = applicationContext;
             Calculator = calculator;
         }
 
-        private ApplicationContext ApplicationContext { get; }
-
+        private static readonly ConcurrentDictionary<string, double> Cache = new();
         private IParallelCalculator Calculator { get; }
-        
+
         public Task<double> CalculateAsync(Dictionary<Expression, Expression[]> dependencies)
         {
             return CalculateAsync(dependencies.First().Key, dependencies);
@@ -33,25 +25,18 @@ namespace Homework10.Calculator
         public async Task<double> CalculateAsync(Expression current,
             IReadOnlyDictionary<Expression, Expression[]> dependencies)
         {
-            var dbcalculation = ApplicationContext.Calculations
-                .FirstOrDefault(x => x.Expression == current.ToString());
-            var isExist = dbcalculation  is not null ;
-
+            var isExist = Cache.ContainsKey(current.ToString());
             if (!isExist)
             {
-                var result = await Calculator.CalculateAsync(current, dependencies);
-                var calculation = new Calculation
-                {
-                    Expression = current.ToString(),
-                    Result = result.ToString(CultureInfo.InvariantCulture)
-                };
-                ApplicationContext.Calculations.Add(calculation);
-                await ApplicationContext.SaveChangesAsync();
+                var result = Cache
+                    .GetOrAdd(current.ToString(), await Calculator.CalculateAsync(current, dependencies));
                 return result;
             }
-
-            var res = double.Parse(dbcalculation.Result);
-            return res;
+            
+            var cacheCalculation = Cache
+                .FirstOrDefault(x =>x.Key == current.ToString()).Value;
+            
+         return cacheCalculation;
         }
     }
 }
