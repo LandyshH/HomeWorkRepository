@@ -4,24 +4,34 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using UserInterface.Models;
 
 namespace UserInterface.Pages
 {
     public class UserStats : PageModel
     {
         [BindProperty] 
-        public Stats Character { get; set; }
+        public User Character { get; set; }
 
+        public Monster Monster { get; set; }
+
+        public Opponents Opponents { get; set; }
+        
+        private readonly HttpClient _client = new();
+        private new const string DBUrl = "https://localhost:5003/Monster";
+        private new const string BLUrl = "https://localhost:5005/GameFight/Fight";
         public void OnGet()
         {
             
         }
         
-        public async Task<IActionResult> OnPost()
+        public async Task OnPostAsync()
         {
-            if (!ModelState.IsValid) return Page();
-            TempData["UserStats"] = JsonSerializer.Serialize(Character);
-            return Redirect("/DnD");
+            if (!ModelState.IsValid) return;
+            Monster = await _client.GetFromJsonAsync<Monster>(DBUrl);
+            var fightResult = await _client.PostAsJsonAsync(BLUrl, 
+                new Opponents{Monster = Monster, User = Character});
+            Opponents = await fightResult.Content.ReadFromJsonAsync<Opponents>();
         }
     }
 }

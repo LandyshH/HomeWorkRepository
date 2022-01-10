@@ -2,15 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace UserInterface
+namespace UserInterface.Characters
 {
     public class Stats
     {
-        [Required]
-        [DisplayName("User Name")]
-        [Column(TypeName = "varchar(500)")]
-        public string Name { get; set; }
-        
         [Required]
         [Range(0, 500)]
         [DisplayName("Hit Points")]
@@ -27,9 +22,14 @@ namespace UserInterface
         public int AttackPerRound { get; set; }
                 
         [Required]
-        [Range(0, 500)]
-        [DisplayName("Damage")]
-        public int Damage { get; set; }
+        [DisplayName("Number of throws")]
+        [Range(0, 10)]
+        public int NumberOfThrows { get; set; }
+        
+        [Required]
+        [DisplayName("Edge count")]
+        [Range(0, 20)]
+        public int EdgeCount { get; set; }
                 
         [Required]
         [Range(0, 300)]

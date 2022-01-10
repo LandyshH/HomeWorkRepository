@@ -2,17 +2,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace DataBase.Models
+namespace BusinessLogic.Characters
 {
-    public class Monster
+    public class Stats
     {
-        public int Id { get; set; }
-
-        [Required]
-        [DisplayName("Monster Name")]
-        [Column(TypeName = "varchar(500)")]
-        public string Name { get; set; }
-        
         [Required]
         [Range(0, 500)]
         [DisplayName("Hit Points")]

@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace DataBase.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20220109220529_FirstMigration")]
+    [Migration("20220110074605_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,10 +36,10 @@ namespace DataBase.Migrations
                     b.Property<int>("AttackPerRound")
                         .HasColumnType("integer");
 
-                    b.Property<int>("Damage")
+                    b.Property<int>("DamageModifier")
                         .HasColumnType("integer");
 
-                    b.Property<int>("DamageModifier")
+                    b.Property<int>("EdgeCount")
                         .HasColumnType("integer");
 
                     b.Property<int>("HitPoints")
@@ -48,6 +48,9 @@ namespace DataBase.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(500)");
+
+                    b.Property<int>("NumberOfThrows")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Weapon")
                         .HasColumnType("integer");
@@ -58,17 +61,19 @@ namespace DataBase.Migrations
 
                     b.HasCheckConstraint("CK_Monsters_ArmorClass_Range", "\"ArmorClass\" >= 0 AND \"ArmorClass\" <= 100");
 
-                    b.HasCheckConstraint("CK_Monsters_AttackModifier_Range", "\"AttackModifier\" >= 0 AND \"AttackModifier\" <= 2147483647");
+                    b.HasCheckConstraint("CK_Monsters_AttackModifier_Range", "\"AttackModifier\" >= 0 AND \"AttackModifier\" <= 300");
 
-                    b.HasCheckConstraint("CK_Monsters_AttackPerRound_Range", "\"AttackPerRound\" >= 0 AND \"AttackPerRound\" <= 2147483647");
+                    b.HasCheckConstraint("CK_Monsters_AttackPerRound_Range", "\"AttackPerRound\" >= 0 AND \"AttackPerRound\" <= 100");
 
-                    b.HasCheckConstraint("CK_Monsters_Damage_Range", "\"Damage\" >= 0 AND \"Damage\" <= 2147483647");
+                    b.HasCheckConstraint("CK_Monsters_DamageModifier_Range", "\"DamageModifier\" >= 0 AND \"DamageModifier\" <= 300");
 
-                    b.HasCheckConstraint("CK_Monsters_DamageModifier_Range", "\"DamageModifier\" >= 0 AND \"DamageModifier\" <= 2147483647");
+                    b.HasCheckConstraint("CK_Monsters_EdgeCount_Range", "\"EdgeCount\" >= 0 AND \"EdgeCount\" <= 20");
 
-                    b.HasCheckConstraint("CK_Monsters_HitPoints_Range", "\"HitPoints\" >= 0 AND \"HitPoints\" <= 2147483647");
+                    b.HasCheckConstraint("CK_Monsters_HitPoints_Range", "\"HitPoints\" >= 0 AND \"HitPoints\" <= 500");
 
-                    b.HasCheckConstraint("CK_Monsters_Weapon_Range", "\"Weapon\" >= 0 AND \"Weapon\" <= 2147483647");
+                    b.HasCheckConstraint("CK_Monsters_NumberOfThrows_Range", "\"NumberOfThrows\" >= 0 AND \"NumberOfThrows\" <= 10");
+
+                    b.HasCheckConstraint("CK_Monsters_Weapon_Range", "\"Weapon\" >= 0 AND \"Weapon\" <= 300");
 
                     b.HasData(
                         new
@@ -76,11 +81,12 @@ namespace DataBase.Migrations
                             Id = 1,
                             ArmorClass = 15,
                             AttackModifier = 3,
-                            AttackPerRound = 1,
-                            Damage = 23,
+                            AttackPerRound = 2,
                             DamageModifier = 6,
+                            EdgeCount = 8,
                             HitPoints = 92,
                             Name = "Tree Blight",
+                            NumberOfThrows = 1,
                             Weapon = 9
                         },
                         new
@@ -89,10 +95,11 @@ namespace DataBase.Migrations
                             ArmorClass = 12,
                             AttackModifier = 2,
                             AttackPerRound = 1,
-                            Damage = 6,
                             DamageModifier = 2,
+                            EdgeCount = 8,
                             HitPoints = 58,
                             Name = "Banshee",
+                            NumberOfThrows = 1,
                             Weapon = 12
                         },
                         new
@@ -101,10 +108,11 @@ namespace DataBase.Migrations
                             ArmorClass = 15,
                             AttackModifier = 2,
                             AttackPerRound = 1,
-                            Damage = 14,
                             DamageModifier = 21,
+                            EdgeCount = 6,
                             HitPoints = 45,
                             Name = "Hell Hound",
+                            NumberOfThrows = 2,
                             Weapon = 5
                         });
                 });

@@ -11,26 +11,12 @@ namespace UserInterface.Pages
     {
         private readonly HttpClient _client = new();
         private new const string Url = "https://localhost:5003/Monster";
-        public Stats Character { get; set; }
-        public Stats Monster { get; set; }
+        public User Character { get; set; }
+        public Monster Monster { get; set; }
         
         public async Task<IActionResult> OnGet()
         {
-            if (!TempData.TryGetValue("UserStats", out var json))
-            {
-                return Redirect("/");
-            }
-
-            try
-            {
-                Character = JsonSerializer.Deserialize<Stats>((string) json);
-            }
-            catch
-            {
-                return Redirect("/");
-            }
-            
-            Monster = await _client.GetFromJsonAsync<Stats>(Url);
+            Monster = await _client.GetFromJsonAsync<Monster>(Url);
             return Page();
         }
         

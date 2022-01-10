@@ -19,8 +19,9 @@ namespace DataBase
                 Name = "Tree Blight",
                 HitPoints = 92,
                 AttackModifier = 3,
-                AttackPerRound = 1,
-                Damage = 23,
+                AttackPerRound = 2,
+                NumberOfThrows = 1,
+                EdgeCount = 8,
                 DamageModifier = 6,
                 Weapon = 9,
                 ArmorClass = 15
@@ -33,7 +34,8 @@ namespace DataBase
                 HitPoints = 58,
                 AttackModifier = 2,
                 AttackPerRound = 1,
-                Damage = 6,
+                NumberOfThrows = 1,
+                EdgeCount = 8,
                 DamageModifier = 2,
                 Weapon = 12,
                 ArmorClass = 12
@@ -46,7 +48,8 @@ namespace DataBase
                 HitPoints = 45,
                 AttackModifier = 2,
                 AttackPerRound = 1,
-                Damage = 14,
+                NumberOfThrows = 2,
+                EdgeCount = 6,
                 DamageModifier = 21,
                 Weapon = 5,
                 ArmorClass = 15

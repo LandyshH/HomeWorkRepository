@@ -2,55 +2,7 @@
 @model UserInterface.Pages.DnD
 
 
-    <div class="for_monster card">
-        <h2 style="color: #a12828; margin-left: 10px"> @Model.Monster?.Name </h2>
-    <div class="card-body">
-        <div class="row mb-2">
-                 <div class="col-2 ml-1">
-                     <label asp-for="Monster.Name"></label>
-                     <input readonly="readonly" asp-for="Monster.Name"/>
-                 </div>
-                
-                <div class="col-2 ml-5">
-                    <label asp-for="Monster.HitPoints"></label>
-                    <input readonly="readonly" asp-for="Monster.HitPoints"/>
-                </div>
-            </div>
     
-            <div class="row mb-2">
-                <div class="col-2 ml-1">
-                    <label asp-for="Monster.AttackModifier"></label>
-                    <input readonly="readonly" asp-for="Monster.AttackModifier"/>
-                </div>
-                
-                <div class="col-2 ml-5">
-                    <label asp-for="Monster.AttackPerRound"></label>
-                    <input readonly="readonly" asp-for="Monster.AttackPerRound"/>
-                </div>
-            </div>
+<div class="">
     
-            <div class="row mb-2">
-                <div class="col-2 ml-1">
-                    <label asp-for="Monster.Damage"></label>
-                    <input readonly="readonly" asp-for="Monster.Damage"/>
-                </div>
-                
-                <div class="col-2 ml-5">
-                    <label asp-for="Monster.DamageModifier"></label>
-                    <input readonly="readonly" asp-for="Monster.DamageModifier"/>
-                </div>
-                
-            </div>
-    
-            <div class="row mb-2">
-                <div class="col-2 ml-1">
-                    <label asp-for="Monster.Weapon"></label>
-                    <input readonly="readonly" asp-for="Monster.Weapon"/>
-                </div>
-                <div class="col-2 ml-5">
-                    <label asp-for="Monster.ArmorClass"></label>
-                    <input readonly="readonly" asp-for="Monster.ArmorClass"/>
-                </div>
-            </div>
-    </div>
 </div>
