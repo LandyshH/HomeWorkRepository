@@ -34,6 +34,7 @@ namespace UserInterface.Pages
             var fightResult = await _client.PostAsJsonAsync(BLUrl, 
                 new Opponents{Monster = Monster, User = Character});
             Result = await fightResult.Content.ReadFromJsonAsync<FightResult>();
+            
         }
     }
 }

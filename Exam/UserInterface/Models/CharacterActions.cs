@@ -8,5 +8,9 @@ namespace UserInterface.Models
         public int d20RollResult { get; set; }
         public int Damage { get; set; }
         public HitType TypeOfHit { get; set; }
+        
+        public string EnemyName { get; set; }
+        
+        public int EnemyHP { get; set; }
     }
 }

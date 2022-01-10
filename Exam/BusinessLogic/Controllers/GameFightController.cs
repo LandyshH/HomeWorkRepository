@@ -18,6 +18,7 @@ namespace BusinessLogic.Controllers
         public FightResult Post([FromBody] Opponents opponents)
         {
             var fight = new Fight();
+            
             var result = new FightResult
             {
                 ActionsList = fight.FightProcess(opponents), 

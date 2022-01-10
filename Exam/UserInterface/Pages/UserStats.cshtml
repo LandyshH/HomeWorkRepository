@@ -126,17 +126,33 @@
     </div>
 }
 
-<div style="background-color: #0f6674; color: white;">
-    @Model.Result.ActionsList.Count
-    
-    @foreach (var action in Model.Result.ActionsList)
-    {
+@if (Model.Result is not null)
+{
+    <div style="background-color: #0f6674; color: white; text-align: center">
+        @foreach (var action in Model.Result.ActionsList)
+        {
+            <h2>@action.CharacterName</h2>
+            <div> d20 + attack modifier: @action.d20RollResult  </div>    
+            <div> @action.TypeOfHit </div>
+            <div>Damage: @action.Damage for @action.EnemyName</div>
+            <div>Enemy HP: @action.EnemyName (@action.EnemyHP)</div>                                                
+        }
+        
         <div>
-            @action.CharacterName
-            @action.d20RollResult , @action.TypeOfHit , @action.Damage
+            Победил:
+            @if (Model.Result.IsUserWon)
+            {
+               <div> @Model.Character.Name </div> 
+            }
+            else
+            {
+                <div> @Model.Monster.Name </div> 
+            }
         </div>
-    }
-</div>
+    </div>
+}
+
+
 
 
 @section Scripts

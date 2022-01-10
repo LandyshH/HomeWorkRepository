@@ -18,6 +18,7 @@ namespace BusinessLogic.FightLogic
                 {
                     var act = RoundProcess(opponents.User, opponents.Monster);
                     act.CharacterName = opponents.User.Name;
+                    act.EnemyName = opponents.Monster.Name;
                     ActionsList.Add(act);
                 }
                 else
@@ -29,6 +30,7 @@ namespace BusinessLogic.FightLogic
                 {
                     var act = RoundProcess(opponents.Monster, opponents.User);
                     act.CharacterName = opponents.Monster.Name;
+                    act.EnemyName = opponents.User.Name;
                     ActionsList.Add(act); 
                 }
                 else
@@ -67,6 +69,11 @@ namespace BusinessLogic.FightLogic
                     }
                     
                     fighter2.HitPoints -= action.Damage;
+                    action.EnemyHP = fighter2.HitPoints;
+                    if (fighter2.HitPoints < 0)
+                    {
+                        fighter2.HitPoints = 0;
+                    }
                 }
                 else
                 {
