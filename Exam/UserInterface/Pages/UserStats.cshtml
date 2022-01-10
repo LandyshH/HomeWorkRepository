@@ -1,4 +1,5 @@
 ﻿@page
+@using Microsoft.AspNetCore.Authentication
 @model UserInterface.Pages.UserStats
 
 <div class="card">
@@ -124,6 +125,18 @@
         </div>
     </div>
 }
+
+<div style="background-color: #0f6674; color: white;">
+    @Model.Result.ActionsList.Count
+    
+    @foreach (var action in Model.Result.ActionsList)
+    {
+        <div>
+            @action.CharacterName
+            @action.d20RollResult , @action.TypeOfHit , @action.Damage
+        </div>
+    }
+</div>
 
 
 @section Scripts

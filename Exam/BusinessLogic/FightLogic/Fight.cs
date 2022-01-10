@@ -47,10 +47,7 @@ namespace BusinessLogic.FightLogic
             for (var i = 0; i < fighter1.AttackPerRound; i++)
             {
                 var d20Result = rnd.Next(1, 21);
-                if (d20Result == 1)
-                {
-                    action.TypeOfHit = HitType.Miss;
-                }
+      
                 action.d20RollResult = d20Result + fighter1.AttackModifier;
                 if ((d20Result == 20 || action.d20RollResult >= fighter2.ArmorClass) && d20Result != 1)
                 {
@@ -70,6 +67,10 @@ namespace BusinessLogic.FightLogic
                     }
                     
                     fighter2.HitPoints -= action.Damage;
+                }
+                else
+                {
+                    action.TypeOfHit = HitType.Miss;
                 }
             }
             
