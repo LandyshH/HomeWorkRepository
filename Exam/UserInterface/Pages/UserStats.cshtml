@@ -1,0 +1,72 @@
+﻿@page
+@model UserInterface.Pages.UserStats
+
+<div class="card">
+    <h2> Character </h2>
+    <form method="post" class="card-body">
+        <div class="row mb-2">
+             <div class="col-2 ml-1">
+                 <label asp-for="Character.Name"></label>
+                 <input required="required" type="text" asp-for="Character.Name"/>
+                 <span asp-validation-for="Character.Name"></span>
+             </div>
+            
+            <div class="col-2 ml-5">
+                <label asp-for="Character.HitPoints"></label>
+                <input required="required" min="0" max="500" asp-for="Character.HitPoints"/>
+                <span asp-validation-for="Character.HitPoints"></span>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-2 ml-1">
+                <label asp-for="Character.AttackModifier"></label>
+                <input required="required" min="0" max="300" asp-for="Character.AttackModifier"/>
+                <span asp-validation-for="Character.AttackModifier"></span>
+            </div>
+            
+            <div class="col-2 ml-5">
+                <label asp-for="Character.AttackPerRound"></label>
+                <input required="required" min="0" max="100" asp-for="Character.AttackPerRound"/>
+                <span asp-validation-for="Character.AttackPerRound"></span>
+            </div>
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-2 ml-1">
+                <label asp-for="Character.Damage"></label>
+                <input required="required" min="0" max="500" asp-for="Character.Damage"/>
+                <span asp-validation-for="Character.Damage"></span>
+            </div>
+            
+            <div class="col-2 ml-5">
+                <label asp-for="Character.DamageModifier"></label>
+                <input required="required" min="0" max="300" asp-for="Character.DamageModifier"/>
+                <span asp-validation-for="Character.DamageModifier"></span>
+            </div>
+            
+        </div>
+
+        <div class="row mb-2">
+            <div class="col-2 ml-1">
+                <label asp-for="Character.Weapon"></label>
+                <input required="required" min="0" max="300" asp-for="Character.Weapon"/>
+                <span asp-validation-for="Character.Weapon"></span>
+            </div>
+            <div class="col-2 ml-5">
+                <label asp-for="Character.ArmorClass"></label>
+                <input required="required" min="0" max="100" asp-for="Character.ArmorClass"/>
+                <span asp-validation-for="Character.ArmorClass"></span>
+            </div>
+        </div>
+        <input type="submit" value="submit"/>
+    </form>
+</div>
+
+
+
+
+@section Scripts
+{
+    <partial name="Shared/_ValidationScriptsPartial"></partial>
+}
