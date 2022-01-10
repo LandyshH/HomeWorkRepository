@@ -15,8 +15,7 @@ namespace UserInterface.Pages
         public User Character { get; set; }
 
         public Monster Monster { get; set; }
-
-        //public Opponents Opponents { get; set; }
+        
         public FightResult Result { get; set; }
         
         private readonly HttpClient _client = new();

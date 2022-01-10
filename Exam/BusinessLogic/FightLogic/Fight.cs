@@ -35,7 +35,7 @@ namespace BusinessLogic.FightLogic
                 }
                 else
                 {
-                    Winner = Winner.Monster;
+                    Winner = Winner.User;
                 }
             }
 
@@ -46,12 +46,12 @@ namespace BusinessLogic.FightLogic
         {
             var action = new CharactersActions();
             var rnd = new Random();
-            for (var i = 0; i < fighter1.AttackPerRound; i++)
+            for (var i = 0; i < fighter1.AttackPerRound  && fighter2.HitPoints >= 0; i++)
             {
                 var d20Result = rnd.Next(1, 21);
       
                 action.d20RollResult = d20Result + fighter1.AttackModifier;
-                if ((d20Result == 20 || action.d20RollResult >= fighter2.ArmorClass) && d20Result != 1)
+                if ((d20Result == 20 || action.d20RollResult >= fighter2.ArmorClass) && d20Result != 1 && fighter2.HitPoints >= 0)
                 {
                     action.TypeOfHit = HitType.Hit;
                     var damage = 0;
@@ -69,15 +69,18 @@ namespace BusinessLogic.FightLogic
                     }
                     
                     fighter2.HitPoints -= action.Damage;
-                    action.EnemyHP = fighter2.HitPoints;
+                    
                     if (fighter2.HitPoints < 0)
                     {
                         fighter2.HitPoints = 0;
                     }
+                    
+                    action.EnemyHP = fighter2.HitPoints;
                 }
                 else
                 {
                     action.TypeOfHit = HitType.Miss;
+                    var t = fighter2.HitPoints;
                 }
             }
             
